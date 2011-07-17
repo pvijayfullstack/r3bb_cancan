@@ -15,10 +15,19 @@ def make_users
                          :password_confirmation => "admin333",
                          :roles => ["admin"])
     
-    user = User.create!(:email => "user333@example.com",
+    basic = User.create!(:email => "user333@example.com",
                          :password => "user333",
                          :password_confirmation => "user333",
-                         :roles => ["user"])
+                         :roles => ["basic"])
+    paid = User.create!(:email => "paid333@example.com",
+                         :password => "paid333",
+                         :password_confirmation => "paid333",
+                         :roles => ["paid"])
+    
+    editor = User.create!(:email => "editor333@example.com",
+                         :password => "editor333",
+                         :password_confirmation => "editor333",
+                         :roles => ["editor"])                     
 end
 
 def make_posts
