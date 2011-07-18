@@ -1,0 +1,14 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>Exercise</th>
+    <th>Resistance</th>
+    <th>Repetitions</th>
+  </tr>
+  <%= render :partial => 'activity', :collection => @activities %>
+</table>
+
+<br />
+
+<%= link_to 'New Activity', new_workout_activity_path(@workout) %>

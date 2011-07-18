@@ -1,0 +1,13 @@
+<tr> 
+  <td><%=h goal.name %></td> 
+  <td> </td> 
+  <td>
+    <%= link_to image_tag("display.gif", {:title => "View Report"}), goal_path(goal) %>
+  </td> 
+  <td>
+    <%=link_to image_tag("edit_photo.gif", {:title => "Edit Goal Details"}), edit_goal_path(goal) %>
+  </td> 
+  <td>
+     <%= link_to image_tag("delete_photo.gif", {:title => "Delete Goal"}), goal_path(goal), :confirm => 'Are you sure?', :method => :delete %>
+  </td> 
+</tr>

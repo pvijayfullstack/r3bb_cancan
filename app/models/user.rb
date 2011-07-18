@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  has_many :posts
+  has_many :posts, :dependent => :destroy
+  has_many :exercises, :dependent => :destroy
+  has_many :workouts, :dependent => :destroy
+  has_many :activities, :through => :workouts
+  has_many :goals, :dependent => :destroy
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable

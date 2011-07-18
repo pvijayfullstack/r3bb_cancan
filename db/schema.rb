@@ -10,12 +10,37 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110717023914) do
+ActiveRecord::Schema.define(:version => 20110718160033) do
+
+  create_table "activities", :force => true do |t|
+    t.integer  "workout_id"
+    t.integer  "exercise_id"
+    t.integer  "resistance"
+    t.integer  "repetitions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "commenter"
     t.text     "body"
     t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goals", :force => true do |t|
+    t.string   "name"
+    t.decimal  "value"
+    t.decimal  "last"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,6 +66,14 @@ ActiveRecord::Schema.define(:version => 20110717023914) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_histories_on_item_and_table_and_month_and_year"
+
+  create_table "results", :force => true do |t|
+    t.integer  "goal_id"
+    t.date     "date"
+    t.decimal  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
@@ -68,5 +101,13 @@ ActiveRecord::Schema.define(:version => 20110717023914) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "workouts", :force => true do |t|
+    t.date     "date"
+    t.string   "label"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

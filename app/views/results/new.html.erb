@@ -1,0 +1,18 @@
+<h1>New result</h1>
+
+<%= form_for(@goal) do |f| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this result from being saved:</h2>
+
+      <ul>
+      <% @goal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<%= render 'form', :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Back', goal_results_path(@goal) %>

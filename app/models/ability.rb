@@ -9,6 +9,11 @@ class Ability
   # Role Inheritance  
   def basic
     can :read, :all
+    can :manage, Exercise
+    can :manage, Workout
+    can :manage, Activity
+    can :manage, Goal
+    can :manage, Result
   end
   def paid
     basic

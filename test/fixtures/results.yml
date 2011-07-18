@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  goal: 
+  date: 2011-07-18
+  value: 9.99
+
+two:
+  goal: 
+  date: 2011-07-18
+  value: 9.99

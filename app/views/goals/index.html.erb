@@ -1,0 +1,12 @@
+<h1>Listing goals</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <%= render :partial => 'goal', :collection => @goals %>
+</table>
+
+<br />
+
+<%= link_to 'New Goal', new_goal_path %>

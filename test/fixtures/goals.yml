@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  value: 9.99
+  last: 9.99
+  user: 
+
+two:
+  name: MyString
+  value: 9.99
+  last: 9.99
+  user: 

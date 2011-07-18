@@ -1,0 +1,24 @@
+<h1>Exercises</h1> 
+<p>On this page you can create and manage the exercises that you use in your ➥ workouts.</p> 
+<p>You can also view reports on your progress for each exercises</p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exercises.each do |exercise| %>
+  <tr>
+    <td><%= exercise.name %></td>
+    <td><%= link_to image_tag("display.gif", {:title => "View Exercise Details"}), exercise %></td>
+    <td><%= link_to image_tag("edit_photo.gif", {:title => "Edit Exercise"}), edit_exercise_path(exercise) %></td>
+    <td><%= link_to image_tag("delete_photo.gif", {:title => "Delete Exercise"}), exercise, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exercise', new_exercise_path %>

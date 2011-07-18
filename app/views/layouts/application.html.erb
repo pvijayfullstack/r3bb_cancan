@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rails3BlogBasic</title>
-  <%= stylesheet_link_tag :all %>
+    <title><%= @title || "Fitness" %></title> 
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.2.2/build/reset-fonts-grids/reset-fonts-grids.css"> 
+    <%= stylesheet_link_tag 'styles' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
@@ -18,7 +19,33 @@
   <% end %>  
 </div>  
 
-<%= yield %>
+<div id="doc2" class="yui-t2">
+  <div id="hd" class="box grad blue"> 
+    <%= image_tag 'grad_black.png' %> 
+    <h1 id="masthead"><%= link_to "Fitness", root_path %></h1>
+</div>
+
+<div id="bd"> 
+  <div id="yui-main">
+    <div class="yui-b"> 
+      <%= yield %>
+    </div> 
+  </div>
+  <% if user_signed_in? %> 
+    <div class="yui-b sidebar">
+      <ul> 
+        <li><%= link_to 'Exercises', exercises_path %></li> 
+        <li><%= link_to 'Workouts', workouts_path %></li> 
+        <li><%= link_to 'Goals', goals_path %></li> 
+        <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+      </ul> 
+    </div>
+  <% end %> 
+</div>
+  
+<div id="ft" class="box grad blue">
+  <%= image_tag 'grad_white.png' %></div> 
+</div>
 
 </body>
 </html>
