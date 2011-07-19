@@ -1,10 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Results for <%=h @goal.name %> </h1> 
-<p>
-  <b>Goal:</b>
-  <%=h @goal.value %> 
-</p>
+
 <%# debug @goal.results.collect {|r| r.value.to_f }.inspect %>
 
 <script type="text/javascript" charset="utf-8">  
@@ -32,10 +29,11 @@
 
 <div id="goals_chart" style="width: 560px; height: 300px;"></div>
 
-<p> <b>Current:</b> 
-  <%=h @goal.last %>
-</p>
-
+<%= high_chart("my_id", @chart) %>
+<%= high_chart("my_id2", @h) %>
+<%= high_chart("my_id3", @chart_pie) %>
+<%= high_chart("my_id4", @bar) %>
+         
 <table>
   <tr><th>Date</th><th>Value</th></tr>
   <%= render :partial => 'results/result', :collection => @results %>
