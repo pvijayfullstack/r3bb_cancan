@@ -1,6 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Results for <%= h @goal.name %> </h1> 
+<h1>Results for <%=h @goal.name %> </h1> 
+<p>
+  <b>Goal:</b>
+  <%=h @goal.value %> 
+</p>
+<%# debug @goal.results.collect {|r| r.value.to_f }.inspect %>
+
+<script type="text/javascript" charset="utf-8">  
+  $(function () {  
+    new Highcharts.Chart({  
+      chart: { renderTo: 'goals_chart' },
+      title: { text: 'Goal and Result' },
+      xAxis: { type: 'datetime' },  
+      yAxis: { title: { text: 'Pound'} },
+      series: [{          
+          name: "Result",
+          pointInterval: <%= 1.day * 1000 %>,  
+          pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,  
+          data: <%= @goal.results.collect {|r| r.value.to_f }.inspect %>
+        },
+       {
+          name: "Goal",
+          pointInterval: <%= 1.day * 1000 %>,  
+          pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>, 
+         data: <%= @goal.results.collect {|r| @goal.value.to_f }.inspect %>       
+      }]               
+    });  
+  });  
+</script> 
+
+<div id="goals_chart" style="width: 560px; height: 300px;"></div>
+
+<p> <b>Current:</b> 
+  <%=h @goal.last %>
+</p>
+
 <table>
   <tr><th>Date</th><th>Value</th></tr>
   <%= render :partial => 'results/result', :collection => @results %>
